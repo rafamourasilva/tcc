@@ -1,0 +1,39 @@
+<?php echo $this->formHidden( 'endereco[id_endereco]', $this->endereco['id_endereco'] );?>
+<div>
+    <label for = "endereço">Endereço</label>
+    <?php
+    echo $this->formText( 'endereco[ds_endereco]', $this->endereco['ds_endereco']
+            , array( 'id'        => 'endereco', 'maxlength' => '200', 'size'      => '65' ) )
+    ?>
+</div>     
+<div class="left">
+    <label for="numero">Número</label>
+    <?php
+    echo $this->formText( 'endereco[nu_endereco]', $this->endereco['nu_endereco']
+            , array( 'id'        => 'numero_endereco', 'maxlength' => '12' ) )
+    ?>
+</div>
+<div>
+    <label for="Complemento">Complemento</label>
+    <?php
+    echo $this->formText( 'endereco[ds_complemento]', $this->endereco['ds_complemento']
+            , array( 'id'        => 'complemento', 'maxlength' => '50' ) )
+    ?>
+</div>    
+<div>
+    <label for="bairro">Bairro</label>
+    <?php
+    echo $this->formText( 'endereco[ds_bairro]', $this->endereco['ds_bairro']
+            , array( 'id'        => 'bairro', 'maxlength' => '50' ) )
+    ?>
+</div>         
+<div class="left">
+    <label for="uf">UF</label>
+<?php echo $this->formSelect( 'endereco[ds_uf]', $this->endereco['ds_uf']
+        , array( 'id' => 'uf', 'class'=>'input-mini' ), $this->ufs ) ?>
+</div>     
+<div>
+    <label for="cidade">Cidade</label>
+<?php echo $this->formSelect( 'endereco[ds_cidade]', $this->endereco['ds_cidade']
+        , array( 'id' => 'cidade' ), $this->cidades ) ?>
+</div>     

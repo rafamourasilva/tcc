@@ -1,0 +1,13 @@
+<?php echo $this->formHidden( 'pessoa[id_pessoa]', $this->pessoa['id_pessoa'] ); ?>
+<div>
+    <label for="nome">Nome</label>
+    <?php echo $this->formText( 'pessoa[ds_nome]', $this->pessoa['ds_nome'], array( 'class' => 'nome', 'size'=>'80' ) ); ?>
+</div>    
+<div class='left'>
+    <label for="cpf">Cpf</label>
+    <?php echo $this->formText( 'pessoa[nu_cpf]', $this->pessoa['nu_cpf'], array( 'class' => 'cpf', 'maxlength'=>'11' ) ) ?>
+</div>    
+<div>
+    <label for="RG">RG</label>
+    <?php echo $this->formText( 'pessoa[nu_rg]', $this->pessoa['nu_rg'], array( 'class' => 'rg' ) ) ?>
+</div>        

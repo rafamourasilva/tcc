@@ -1,0 +1,129 @@
+/* 
+    Document   : geral
+    Created on : 14/12/2011, 13:08:32
+    Author     : Felipe
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+body{
+    padding-top: 60px;
+}
+
+root { 
+    display: block;
+}
+
+.left{
+    float:left; 
+    padding-right: 5px;
+}
+
+.right{
+    float:right; 
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+ul.errors{
+    border-color: red;
+    color: darkred ;
+    list-style: none;
+    padding: 0;
+}
+
+form{
+    color: black;
+    font-family: sans-serif;
+    font-size: 12px;
+}
+
+
+#divForm{
+    width: 400px;    
+    font-family: 'Courier New',Courier,monospace;
+}
+
+.div_input{
+    width: 100%
+}
+
+legend{
+    font-family: sans-serif;
+    font-size: 16px;
+        
+}
+
+.centralLi{
+    list-style: none;
+}
+
+
+#form,label{
+    float:left;
+    width: 150px;
+    font-weight: bold;
+    text-align:right;
+    padding-right: 5px;    
+}
+
+#form ,div, label, li {
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+input, textarea{
+    margin-bottom: 5px;
+}
+
+textarea{
+    width: 250px;
+    height: 150px;
+}
+
+.boxes{
+    width: 1em;
+}
+
+#submitbutton{
+    margin-left: 120px;
+    margin-top: 5px;
+    width: 90px;
+}
+
+bt{
+    clear:left;
+}
+
+.barra{
+    overflow: auto;
+}
+
+.padra_rolagem{
+    height: 250px;
+}
+
+.div-clear { clear: both; }
+
+.center{
+    text-align: center;
+}
+
+.borda{
+    border: 1px solid #ccc;
+}
+
+.img_colete{
+    text-align: center;
+    background-image: url('../img/colete.jpg');
+    width: 60px;
+    height: 50px;    
+}
+
+.div-400{
+    width: 400px;
+}
