@@ -1,0 +1,15 @@
+<h2>Cadastro de usuário</h2>
+<form name="loginform" method="POST">
+        
+        <label>Nome</label><br/>
+        <input type="text" name="nome" alt="Nome" align="left" required/>
+        <br/><br/>
+        <label>Email</label><br/>
+        <input type="email" name="email" alt="Email" align="left" required/>
+        <br/><br/>
+        <label>Senha</label><br/>
+        <input type="password" name="senha" alt="Senha" align="left" required/>
+        
+        <input type="submit" value="Cadastrar"/>
+        <a href="<?php echo $this->baseUrl('/usuario'); ?>">Voltar</a>
+</form>

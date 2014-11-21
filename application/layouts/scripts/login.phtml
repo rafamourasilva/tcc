@@ -23,41 +23,15 @@
         <script type="text/javascript" language="javascript" src="<?php echo $this->baseUrl(); ?>/js/bootstrap.js" ></script>            
     </head>
     <body>
-        <section id="conteudo"> 
+<section id="login">
+	
 
-            <header>
-                <h1>
-                    <a href="index.php" style="text-decoration:none; color: black;">
-                        <img  alt="logomarca Janelas Brasil" src="img/logo.png"/>People</a>
-                </h1>
-
-                <nav alt="menu">
-                    <ul>
-                        <a href="home.php"><li>Início</li></a>
-                        <a href="#"><li>Cadastro</li></a>
-                        <a href="home.php"><li>Relatórios</li></a>
-                        <a href="#"><li>Sair</li></a>
-                    </ul>	
-                </nav>
-            </header>
-            
-            <?php if(isset($this->mensagem)) {
-                echo $this->mensagem;
-            }
-            ?>
-
-            <section id="navegacao">
+		<h1>
+			<a href="index.php" style="text-decoration:none; color: black;">
+			<img  alt="logomarca Janelas Brasil" src="img/logo.png" />People</a>
+		</h1>
 
                 <?php echo $this->layout()->content; ?>
-
-
-
-            </section><!------------- final de section navegacao ----------->
-
-            <footer>
-                &copy2014
-
-            </footer>
 
         </section><!------------- final de section conteudo ------------>
 

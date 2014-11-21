@@ -1,25 +1,10 @@
-<h1 style="color:gray;">Cadastro de Projeto</h1><br /><hr /><br /><br />
-
-
-<form name="signup" method="post" action="cadastrandoColaborador.php">
-    <article>
-        <label>Nome do Projeto</label><br/>
-        <input type="text" name="nomeProjeto" alt="Nome do Projeto" align="left" required/>
+<form name="loginform" method="POST" action="userauthentication.php">
+        <label>Email</label><br/>
+        <input type="email" name="email" alt="Email" align="left" required/>
         <br/><br/>
-        <label>Responsável</label><br/>
-        <input type="text" name="cargo" alt="email" align="left" required/>
-        <br/><br/>
-        <label>Resultado</label><br/>
-        <input type="text" name="resultado" alt="resultado" align="left" required/>
-        <br/><br/>
-        <div><label>Data de Início</label><br/>
-            <input type="date" name="inicio" alt="inicio" align="left" /></div>
-        </div><br/><br/>
-        <div><label>Data de conclusão</label><br/>
-            <input type="date" name="conclusao" alt="conclusao" align="left" /></div>
-        </div><br/><br/>
-
-        <input type="submit" value="Enviar"/>		<input type="reset" class="reset" value="Limpar"/>
-    </article>					
+        <label>Senha</label><br/>
+        <input type="password" name="senha" alt="Senha" align="left" required/>
+        <br/><a href="#" ><h6>Esqueci a Senha</h6></a><br/><br/>
+        <input type="submit" value="Entrar"/>
 </form>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>

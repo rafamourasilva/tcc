@@ -1,0 +1,15 @@
+<h2>Editar de usuário</h2>
+<form name="loginform" method="POST">
+        <input type="hidden" name="id" value="<?php echo $this->usuario->id?>">
+        <label>Nome</label><br/>
+        <input type="text" name="nome" value="<?php echo $this->usuario->nome?>" alt="Nome" align="left" required/>
+        <br/><br/>
+        <label>Email</label><br/>
+        <input type="email" name="email" value="<?php echo $this->usuario->email?>" alt="Email" align="left" required/>
+        <br/><br/>
+        <label>Senha</label><br/>
+        <input type="password" name="senha" value="<?php echo $this->usuario->senha?>" alt="Senha" align="left" required/>
+        
+        <input type="submit" value="Editar"/>
+        <a href="<?php echo $this->baseUrl('/usuario'); ?>">Voltar</a>
+</form>

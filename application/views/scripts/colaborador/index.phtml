@@ -1,0 +1,28 @@
+<h2>Relação de Colaboradores</h2>
+<a href="<?php echo $this->baseUrl('/colaborador/cadastrar')?>">
+            Cadastrar
+            </a>
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Ação</th>
+    </tr>
+    <?php foreach ($this->array as $value) :?>
+    <tr>
+        <td><?php echo $value['id']?></td>
+        <td><?php echo $value['nome']?></td>
+        <td>
+            <a href="<?php echo $this->baseUrl('/colaborador/ver/id/'.$value['id'])?>">
+            Ver
+            </a> 
+            <a href="<?php echo $this->baseUrl('/colaborador/editar/id/'.$value['id'])?>">
+            Editar
+            </a>            
+            <a href="<?php echo $this->baseUrl('/colaborador/excluir/id/'.$value['id'])?>">
+            Excluir
+            </a>            
+        </td>                  
+    </tr>
+    <?php endforeach;?>
+</table>

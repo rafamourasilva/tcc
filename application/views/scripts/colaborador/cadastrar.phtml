@@ -1,0 +1,26 @@
+<h2>Cadastro de colaborador</h2>
+<form name="loginform" method="POST">
+        
+        <label>Usuário</label><br/>
+        <select name="usuario_id">
+            <?php foreach($this->rel_usuarios as $usuario):?>
+            <option value="<?php echo $usuario["id"]?>">
+            <?php echo $usuario["nome"]?>
+            </option>
+            <?php endforeach;?>
+        </select>
+        <br/><br/>
+        <label>Area</label><br/>
+        <?php echo $this->formSelect('area','',array(),$this->area);?>        
+        <br/><br/>
+        <label>Função</label><br/>
+         <?php echo $this->formSelect('funcao','',array(),$this->funcao);?>        
+        <br/><br/>
+         <label>Formação</label><br/>
+         <?php echo $this->formSelect('formacao','',array(),$this->formacao);?>        
+        <br/><br/>
+        <label>Matrícula</label><br>
+        <?php echo $this->formText("matricula",'',array("required"=>true))?>
+        <input type="submit" value="Cadastrar"/>
+        <a href="<?php echo $this->baseUrl('/colaborador'); ?>">Voltar</a>
+</form>

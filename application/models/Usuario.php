@@ -1,6 +1,12 @@
 <?php
 
-namespace Central\Domain\Entity;
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-class Usuario extends AbstractEntity {
+class Application_Model_Usuario extends Zend_Db_Table_Abstract{
+    protected $_primary = 'id';
+    protected $_name = 'usuario';
 }
