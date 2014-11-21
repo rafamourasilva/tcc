@@ -1,26 +1,56 @@
+<section id="navegacao">
 <h2>Cadastro de colaborador</h2>
-<form name="loginform" method="POST">
+<hr/>
+<form name="loginform" method="POST">      
+    <article>
+            
+        <label>Nome
+            <select name="usuario_id">
+                <?php foreach($this->rel_usuarios as $usuario):?>
+                <option value="<?php echo $usuario["id"]?>">
+                <?php echo $usuario["nome"]?>
+                </option>
+                <?php endforeach;?>
+            </select>
+        </label>
+        <br/>
+        <label>Cargo
+            <?php echo $this->formSelect('cargo','',array(),$this->cargo);?>        
+        </label>
+        <br/>
+        <label>Matrícula
+            <?php echo $this->formText("matricula",'',array("required"=>true))?>
+        </label>
+        <br/>
         
-        <label>Usuário</label><br/>
-        <select name="usuario_id">
-            <?php foreach($this->rel_usuarios as $usuario):?>
-            <option value="<?php echo $usuario["id"]?>">
-            <?php echo $usuario["nome"]?>
-            </option>
-            <?php endforeach;?>
-        </select>
-        <br/><br/>
-        <label>Area</label><br/>
-        <?php echo $this->formSelect('area','',array(),$this->area);?>        
-        <br/><br/>
-        <label>Função</label><br/>
-         <?php echo $this->formSelect('funcao','',array(),$this->funcao);?>        
-        <br/><br/>
-         <label>Formação</label><br/>
-         <?php echo $this->formSelect('formacao','',array(),$this->formacao);?>        
-        <br/><br/>
-        <label>Matrícula</label><br>
-        <?php echo $this->formText("matricula",'',array("required"=>true))?>
-        <input type="submit" value="Cadastrar"/>
-        <a href="<?php echo $this->baseUrl('/colaborador'); ?>">Voltar</a>
+        
+        <div><label>Data de Admissão
+            <?php echo $this->formText("data_adm",'',array("required"=>true))?>
+        </label></div>
+        
+        <div><label>Data de Demissão
+            <?php echo $this->formText("data_adm",'')?>
+        </label></div>
+        
+    </article>
+        
+    <article>   
+        <label>Função
+            <?php echo $this->formSelect('funcao','',array(),$this->funcao);?>        
+        </label>
+        <br/>
+        <label>Area
+            <?php echo $this->formSelect('area','',array(),$this->area);?>
+        </label>
+        <br/>        
+         <label>Formação
+            <?php echo $this->formSelect('formacao','',array(),$this->formacao);?>
+         </label>
+        <br/>   
+    
+        <input class="btn btn-success" style="vertical-align:baseline;" type="submit" value="Cadastrar"/>
+        <a class="btn btn-toolbar" style="vertical-align:baseline;" href="<?php echo $this->baseUrl('/colaborador'); ?>">Voltar</a>
+    </article>
 </form>
+<br/><br/><br/>
+</section>

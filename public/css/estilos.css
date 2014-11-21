@@ -82,24 +82,23 @@ input[type="email"], input[type="text"], input[type="password"] , input[type="da
 	padding:.25em;
 	max-width: 410px;
 	width:84%;
-	height: 35px;
+	height: 25px;
 	vertical-align:top;
 }
 select{
-	height: 45px;
+	height: 35px;
 	width:86%;
 }
 input[type="email"]:focus, input[type="text"]:focus, textarea:focus{
 	background:#FFF;	
 }
 
-input[type="submit"]{
+/*input[type="submit"]{
 	background:#49c5bf;
 	border-radius: 0 .25em;
 	border: #49c5bf solid .1em;
 	color: #FFF;
 	font-family: "vera_humana_95regular", Helvetica, sans-serif;
-	width: 70px;
 	font-size:1em;
 	height: 40px;
 	padding:.25em;
@@ -112,7 +111,7 @@ input[type="submit"]:hover{
 	font-family: "vera_humana_95regular", Helvetica, sans-serif;
 	cursor:pointer;
 	
-}
+}*/
 input[type="reset"]{
 	background:rgb(225,225,225);
 	border-radius: 0 .25em;
@@ -215,7 +214,6 @@ nav li:hover{
 	margin: 0 auto;
 	max-width: 940px;
 	width: 100%;
-	border: 1px solid #000;
 	
 }
 
@@ -286,4 +284,18 @@ nav li:hover{
 	
 }
 
+a{
+    text-decoration: none;
+    color:gray;
+}
 
+
+label{
+    font-size:16px;
+    color:gray;
+}
+
+h2{
+    color:gray;
+    
+}

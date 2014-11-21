@@ -1,10 +1,13 @@
 <h2>Excluir de usuário</h2>
+<hr/>
+
 <form name="loginform" method="POST">
         <input type="hidden" name="id" value="<?php echo $this->usuario->id?>">
         <input type="hidden" name="excluir" value="<?php echo $this->usuario->id?>">
         <label>Deseja realmente excluir o usuário? </label><br/>
         <?php echo $this->usuario->nome?>
         <br/><br/>        
-        <input type="submit" value="Excluir"/>
-        <a href="<?php echo $this->baseUrl('/usuario'); ?>">Voltar</a>
+        <input class="btn btn-danger" style="vertical-align:baseline;" type="submit" value="Excluir"/>
+        <a class="btn btn-toolbar" style="vertical-align:baseline;" href="<?php echo $this->baseUrl('/usuario'); ?>">Voltar</a>
 </form>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>

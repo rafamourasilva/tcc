@@ -23,9 +23,10 @@ class ColaboradorController extends Zend_Controller_Action {
             $this->view->mensagem = "Operação realizada com sucesso!";            
         }
         $this->view->rel_usuarios = $usuario->fetchAll();
-        $this->view->area = array(1=>"A",2=>"B",3=>"C");
-        $this->view->formacao = array(1=>"FFA",2=>"FFB",3=>"FFC");
-        $this->view->funcao = array(1=>"FA",2=>"FB",3=>"FC");
+        $this->view->cargo = array(1=>"Analista",2=>"Assistente",3=>"Auxiliar");
+        $this->view->area = array(1=>"Área de Gestão Estratégica",2=>"Área de Gestão de Pessoas",3=>"Área de Gestão Administrativa");
+        $this->view->formacao = array(1=>"Ensino Médio",2=>"Ensino Superior",3=>"Pos-Graduação");
+        $this->view->funcao = array(1=>"Estratégico",2=>"Tático-Estratégico",3=>"Operacional");
     }
     
     public function editarAction() {
