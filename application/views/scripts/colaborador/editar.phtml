@@ -1,15 +1,51 @@
-<h2>Editar de usuário</h2>
-<form name="loginform" method="POST">
-        <input type="hidden" name="id" value="<?php echo $this->usuario->id?>">
-        <label>Nome</label><br/>
-        <input type="text" name="nome" value="<?php echo $this->usuario->nome?>" alt="Nome" align="left" required/>
-        <br/><br/>
-        <label>Email</label><br/>
-        <input type="email" name="email" value="<?php echo $this->usuario->email?>" alt="Email" align="left" required/>
-        <br/><br/>
-        <label>Senha</label><br/>
-        <input type="password" name="senha" value="<?php echo $this->usuario->senha?>" alt="Senha" align="left" required/>
+
+<section id="navegacao">
+<h2>Editar colaborador</h2>
+<hr/>
+<form name="loginform" method="POST">      
+    <article>
+        <input type="hidden" name="id" value="<?php echo $this->colaborador['id']?>">    
+        <input type="hidden" name="usuario_id" value="<?php echo $this->colaborador['usuario_id']?>">    
+        <label>
+            <?php echo $this->colaborador['nome']?>
+        </label>
+        <br/>
+        <label>Cargo
+            <input type="text" name="cargo" value="<?php echo $this->colaborador['cargo']?>" alt="cargo" align="left" required/>      
+        </label>
+        <br/>
+        <label>Matrícula
+            <input type="text" name="matricula" value="<?php echo $this->colaborador['matricula']?>" alt="matricula" align="left" required/>      
+        </label>
+        <br/>        
         
-        <input type="submit" value="Editar"/>
-        <a href="<?php echo $this->baseUrl('/usuario'); ?>">Voltar</a>
+        <div><label>Data de Admissão
+            <input type="text" name="data_adm" value="<?php echo $this->colaborador['data_adm']?>" alt="data_adm" align="left" required/>      
+        </label></div>
+        
+        <div><label>Data de Demissão
+            <input type="text" name="data_dem" value="<?php echo $this->colaborador['data_dem']?>" alt="data_dem" align="left" required/>
+        </label></div>
+        
+    </article>
+        
+    <article>   
+        <label>Função
+            <?php echo $this->formSelect('funcao',$this->colaborador['funcao'],array(),$this->funcao);?>        
+        </label>
+        <br/>
+        <label>Area
+            <?php echo $this->formSelect('area',$this->colaborador['area'],array(),$this->area);?>
+        </label>
+        <br/>        
+         <label>Formação
+            <?php echo $this->formSelect('formacao',$this->colaborador['formacao'],array(),$this->formacao);?>
+         </label>
+        <br/>   
+    
+        <input class="btn btn-success" style="vertical-align:baseline;" type="submit" value="Alterar"/>
+        <a class="btn btn-toolbar" style="vertical-align:baseline;" href="<?php echo $this->baseUrl('/colaborador'); ?>">Voltar</a>
+    </article>
 </form>
+<br/><br/><br/><br/><br/><br/>
+</section>

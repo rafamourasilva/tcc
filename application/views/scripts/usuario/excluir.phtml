@@ -4,9 +4,9 @@
 <form name="loginform" method="POST">
         <input type="hidden" name="id" value="<?php echo $this->usuario->id?>">
         <input type="hidden" name="excluir" value="<?php echo $this->usuario->id?>">
-        <label>Deseja realmente excluir o usuário? </label><br/>
-        <?php echo $this->usuario->nome?>
-        <br/><br/>        
+        <label>Deseja realmente excluir o usuário: </label><br/>
+        <strong><?php echo $this->usuario->nome?></strong>
+        <br/><br/>
         <input class="btn btn-danger" style="vertical-align:baseline;" type="submit" value="Excluir"/>
         <a class="btn btn-toolbar" style="vertical-align:baseline;" href="<?php echo $this->baseUrl('/usuario'); ?>">Voltar</a>
 </form>

@@ -1,0 +1,37 @@
+<section id="navegacao">
+<h2>Cadastro de projeto</h2>
+<hr/>
+<form name="loginform" method="POST">      
+    <article>
+        <label>Nome do Projeto
+            <?php echo $this->formText("nome_projeto",'',array("required"=>true))?>
+        </label>
+        <br/>    
+        <label>Gerente
+            <select name="id_colaborador">
+                <?php foreach($this->rel_colaboradores as $colaborador):?>
+                <option value="<?php echo $colaborador["id"]?>">
+                <?php echo $colaborador["nome"]?>
+                </option>
+                <?php endforeach;?>
+            </select>
+        </label>
+        <br/>        
+        <div><label>Data de Início
+            <?php echo $this->formText("data_ini",'',array("required"=>true))?>
+        </label></div>
+        
+        <div><label>Data de Conclusão
+            <?php echo $this->formText("data_fim",'',array())?>
+        </label></div>
+        <br/>
+        <label>Resultado
+            <?php echo $this->formText('resultado','',array());?>
+        </label>
+        <br/>    
+        <input class="btn btn-success" style="vertical-align:baseline;" type="submit" value="Cadastrar"/>
+        <a class="btn btn-toolbar" style="vertical-align:baseline;" href="<?php echo $this->baseUrl('/projeto'); ?>">Voltar</a>
+    </article>   
+</form>
+<br/><br/><br/><br/>
+</section>

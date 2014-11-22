@@ -1,0 +1,29 @@
+<h2>Relação de Projetos</h2>
+<hr/>
+<a class="btn btn-info" href="<?php echo $this->baseUrl('/projeto/cadastrar')?>">
+Cadastrar projeto
+</a>
+<br/><br/>
+<table class="table table-bordered">
+    <tr>        
+        <th>Nome do Projeto</th>
+        <th>Ações</th>
+    </tr>
+    <?php foreach ($this->projetos as $value) :?>
+    <tr>        
+        <td><?php echo $value['nome']?></td>
+        <td>
+            <a class="btn btn-primary" href="<?php echo $this->baseUrl('/projeto/ver/id/'.$value['id'])?>">
+            Ver
+            </a> 
+            <a class="btn btn-warning" href="<?php echo $this->baseUrl('/projeto/editar/id/'.$value['id'])?>">
+            Editar
+            </a>            
+            <a class="btn btn-danger" href="<?php echo $this->baseUrl('/projeto/excluir/id/'.$value['id'])?>">
+            Excluir
+            </a>            
+        </td>                  
+    </tr>
+    <?php endforeach;?>
+</table>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>

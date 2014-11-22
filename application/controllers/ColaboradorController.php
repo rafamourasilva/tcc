@@ -16,42 +16,56 @@ class ColaboradorController extends Zend_Controller_Action {
     
     public function cadastrarAction() {
         $usuario = new Application_Model_Usuario();                
-        if($this->getParam('nome')) {
+        if($this->getParam('cargo')) {
             $post = $this->getAllParams();            
             $colaborador = new Application_Model_Colaborador();
             $colaborador->salvar($post);
             $this->view->mensagem = "Operação realizada com sucesso!";            
-        }
+        }        
         $this->view->rel_usuarios = $usuario->fetchAll();
+        $this->view->cargo = array(''=>"Selecione",1=>"Analista",2=>"Assistente",3=>"Auxiliar");
+        $this->view->area = array(''=>"Selecione",1=>"Área de Gestão Estratégica",2=>"Área de Gestão de Pessoas",3=>"Área de Gestão Administrativa");
+        $this->view->formacao = array(''=>"Selecione",1=>"Ensino Médio",2=>"Ensino Superior",3=>"Pos-Graduação");
+        $this->view->funcao = array(''=>"Selecione",1=>"Estratégico",2=>"Tático-Estratégico",3=>"Operacional");
+    }
+    
+    public function editarAction() {
+        $colaboradorModel = new Application_Model_Colaborador();
+               
+        if($this->getParam("usuario_id")) {
+            $colaborador["usuario_id"] = $this->getParam('usuario_id');
+            $colaborador["cargo"] = $this->getParam('cargo');
+            $colaborador["matricula"] = $this->getParam('matricula');
+            $colaborador["data_adm"] = $this->getParam('data_adm');
+            $colaborador["data_dem"] = $this->getParam('data_dem');
+            $colaborador["funcao"] = $this->getParam('funcao');
+            $colaborador["formacao"] = $this->getParam('formacao');
+
+            $where = "id = ".$this->getParam("id");
+            $colaboradorModel->update($colaborador, $where);
+            $this->view->mensagem = "Operação realizada com sucesso!";
+        }
+        $colaboradorModel->getAdapter()->setFetchMode(Zend_Db::FETCH_ASSOC); 
+        $colaborador = $colaboradorModel->buscarPorId($this->getParam("id"));    
+        
+        $this->view->colaborador = $colaborador;
         $this->view->cargo = array(1=>"Analista",2=>"Assistente",3=>"Auxiliar");
         $this->view->area = array(1=>"Área de Gestão Estratégica",2=>"Área de Gestão de Pessoas",3=>"Área de Gestão Administrativa");
         $this->view->formacao = array(1=>"Ensino Médio",2=>"Ensino Superior",3=>"Pos-Graduação");
         $this->view->funcao = array(1=>"Estratégico",2=>"Tático-Estratégico",3=>"Operacional");
     }
     
-    public function editarAction() {
-        $colaborador = new Application_Model_Colaborador();
-        $colaborador->getAdapter()->setFetchMode(Zend_Db::FETCH_ASSOC); 
-        $use = $colaborador->fetchRow("id = ".$this->getParam("id"));           
-        if($this->getParam("nome")) {
-            $use->nome = $this->getParam('nome');
-            $use->email = $this->getParam('email');
-            $use->senha = $this->getParam('senha');
-            $use->save();
-            $this->view->mensagem = "Operação realizada com sucesso!";
-        }
-        $this->view->usuario = $use;
-    }
-    
     public function excluirAction() {
-        $colaborador = new Application_Model_Colaborador();
-        $colaborador->getAdapter()->setFetchMode(Zend_Db::FETCH_ASSOC); 
-        $use = $colaborador->fetchRow("id = ".$this->getParam("id"));           
+        $colaboradorModel = new Application_Model_Colaborador();
+        $colaboradorModel->getAdapter()->setFetchMode(Zend_Db::FETCH_ASSOC); 
+        $colaborador = $colaboradorModel->buscarPorId($this->getParam("id"));
+        
         if($this->getParam("excluir")) {
-            $use->delete();
-            $this->_redirect("/usuario");
+            $where = "id = ".$this->getParam("id");
+            $colaboradorModel->delete($where);
+            $this->_redirect("/colaborador");
         }
-        $this->view->usuario = $use;
+        $this->view->colaborador = $colaborador;
     }
     
     public function verAction() {
@@ -59,7 +73,7 @@ class ColaboradorController extends Zend_Controller_Action {
         $colaborador->getAdapter()->setFetchMode(Zend_Db::FETCH_ASSOC); 
         $use = $colaborador->fetchRow("id = ".$this->getParam("id"));           
         
-        $this->view->usuario = $use;
+        $this->view->colaborador = $use;
     }
 
 }

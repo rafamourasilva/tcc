@@ -1,0 +1,12 @@
+<h2>Excluir Projeto</h2>
+<hr/>
+
+<form name="loginform" method="POST">
+        <input type="hidden" name="id" value="<?php echo $this->projeto['id']?>">
+        <input type="hidden" name="excluir" value="<?php echo $this->projeto['id']?>">
+        <label>Deseja realmente excluir o Projeto? </label><br/>
+        <?php echo $this->projeto['nome']?>
+        <br/><br/>        
+        <input class="btn btn-danger" style="vertical-align:baseline;" type="submit" value="Excluir"/>
+        <a class="btn btn-toolbar" style="vertical-align:baseline;" href="<?php echo $this->baseUrl('/projeto'); ?>">Voltar</a>
+</form>

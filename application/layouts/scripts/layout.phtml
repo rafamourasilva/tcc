@@ -28,23 +28,25 @@
             <header>
                 <h1>
                     <a href="index.php" style="text-decoration:none; color: black;">
-                        <img  alt="logomarca" src="/tcc/public/img/logo.png"/>People</a>
+                        <img  alt="logomarca" src="<?php echo $this->baseUrl("/img/logo.png")?>"/>People</a>
                 </h1>
 
                 <nav alt="menu">
                     <ul>
                         <a href="home.php"><li>Início</li></a>
-                        <a href="#"><li>Cadastro</li></a>
-                        <a href="home.php"><li>Relatórios</li></a>
-                        <a href="#"><li>Sair</li></a>
+                        <a href="<?php echo $this->baseUrl("/usuario"); ?>"><li>Usuário</li></a>
+                        <a href="<?php echo $this->baseUrl("/colaborador"); ?>"><li>Colaborador</li></a>
+                        <a href="<?php echo $this->baseUrl("/projeto"); ?>"><li>Projeto</li></a>
+                        <a href="<?php echo $this->baseUrl("/"); ?>"><li>Sair</li></a>
                     </ul>	
                 </nav>
             </header>
             
-            <?php if(isset($this->mensagem)) {
-                echo $this->mensagem;
-            }
-            ?>
+            <div style="text-align:center;"><?php if(isset($this->mensagem)) {
+                    echo $this->mensagem;
+                }
+                ?>
+            </div>
 
             <section id="navegacao">
 

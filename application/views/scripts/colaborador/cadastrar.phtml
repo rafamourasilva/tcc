@@ -5,7 +5,10 @@
     <article>
             
         <label>Nome
-            <select name="usuario_id">
+            <select name="usuario_id" required>
+                <option value="">
+                    Selecione
+                </option>
                 <?php foreach($this->rel_usuarios as $usuario):?>
                 <option value="<?php echo $usuario["id"]?>">
                 <?php echo $usuario["nome"]?>
@@ -14,43 +17,42 @@
             </select>
         </label>
         <br/>
-        <label>Cargo
-            <?php echo $this->formSelect('cargo','',array(),$this->cargo);?>        
+        <label>Cargo            
+            <?php echo $this->formSelect('cargo','',array("required"=>true),$this->cargo);?>        
         </label>
         <br/>
         <label>Matrícula
-            <?php echo $this->formText("matricula",'',array("required"=>true))?>
+            <?php echo $this->formText("matricula",'',array("required"=>true),$this->matricula)?>
         </label>
         <br/>
         
         
         <div><label>Data de Admissão
-            <?php echo $this->formText("data_adm",'',array("required"=>true))?>
+            <?php echo $this->formText("data_adm",'',array("required"=>true),$this->data_adm)?>
         </label></div>
         
         <div><label>Data de Demissão
-            <?php echo $this->formText("data_adm",'')?>
+            <?php echo $this->formText("data_dem",'',$this->data_adm)?>
         </label></div>
         
     </article>
         
     <article>   
         <label>Função
-            <?php echo $this->formSelect('funcao','',array(),$this->funcao);?>        
+            <?php echo $this->formSelect('funcao','',array("required"=>true),$this->funcao);?>        
         </label>
         <br/>
         <label>Area
-            <?php echo $this->formSelect('area','',array(),$this->area);?>
+            <?php echo $this->formSelect('area','',array("required"=>true),$this->area);?>
         </label>
         <br/>        
          <label>Formação
-            <?php echo $this->formSelect('formacao','',array(),$this->formacao);?>
+            <?php echo $this->formSelect('formacao','',array("required"=>true),$this->formacao);?>
          </label>
-        <br/>   
-    
+        <br/>       
         <input class="btn btn-success" style="vertical-align:baseline;" type="submit" value="Cadastrar"/>
         <a class="btn btn-toolbar" style="vertical-align:baseline;" href="<?php echo $this->baseUrl('/colaborador'); ?>">Voltar</a>
     </article>
 </form>
-<br/><br/><br/>
+<br/><br/><br/><br/><br/><br/>
 </section>
