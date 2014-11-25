@@ -10,10 +10,17 @@ class Application_Model_Colaborador extends Zend_Db_Table_Abstract{
     protected $_primary = 'id';
     protected $_name = 'colaborador';
     
+    static public $cargos = array(1=>"Analista",2=>"Assistente",3=>"Auxiliar");
+    static public $area = array(1=>"Área de Gestão Estratégica",2=>"Área de Gestão de Pessoas",3=>"Área de Gestão Administrativa");
+    static public $funcao = array(1=>"Estratégico",2=>"Tático-Estratégico",3=>"Operacional");
+    static public $formacao = array(1=>"Ensino Médio",2=>"Ensino Superior",3=>"Pos-Graduação");
+
     public function selectDefault() {
         return "select c.*, u.nome from colaborador c "
                 . "inner join usuario u on u.id = c.usuario_id ";
     }
+    
+    
     
     public function todos() {
         return $this->getAdapter()->fetchAll($this->selectDefault());

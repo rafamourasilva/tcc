@@ -1,0 +1,48 @@
+<section id="navegacao">
+<h2>Editar Tarefa</h2>
+<hr/>
+<form name="loginform" method="POST">      
+     <article>
+         <input type="hidden" name="id" value="<?php echo $this->tarefa['id']?>">    
+        
+        <label>Descrição da tarefa
+            <?php echo $this->formText("descricao",$this->tarefa['descricao'],array("required"=>true))?>
+        </label>
+        <br/>    
+        <label>Responsável
+            <select name="responsavel">
+                <?php foreach($this->rel_colaboradores as $responsavel):?>
+                <option value="<?php echo $responsavel["id"]?>" <?php echo ($this->tarefa['responsavel'] == $responsavel['id'] ? 'selected' : ''); ?>>
+                <?php echo $responsavel["nome"]?>
+                </option>
+                <?php endforeach;?>
+            </select>
+        </label>
+        <br/>    
+        <label>Projeto
+            <select name="id_projeto">
+                <?php foreach($this->rel_projeto as $projeto):?>
+                <option value="<?php echo $projeto["id"]?>" <?php echo ($this->tarefa['id_projeto'] == $projeto['id'] ? 'selected' : ''); ?>>
+                <?php echo $projeto["nome"]?>
+                </option>
+                <?php endforeach;?>
+            </select>
+            
+        </label>
+        <br/>        
+        <div><label>Data de Início
+            <?php echo $this->formText("data_inicial",$this->tarefa['data_inicial'],array("required"=>true))?>                
+        </label></div>
+        
+        <div><label>Data de Conclusão
+            <?php echo $this->formText("data_final",$this->tarefa['data_final'],array())?>
+        </label></div>
+        <br/>         
+        <input class="btn btn-success" style="vertical-align:baseline;" type="submit" value="Alterar"/>
+        <a class="btn btn-toolbar" style="vertical-align:baseline;" href="<?php echo $this->baseUrl('/tarefa'); ?>">Voltar</a>
+    </article>
+        
+    
+</form>
+<br/><br/><br/><br/><br/><br/>
+</section>

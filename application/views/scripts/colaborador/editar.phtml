@@ -11,7 +11,7 @@
         </label>
         <br/>
         <label>Cargo
-            <input type="text" name="cargo" value="<?php echo $this->colaborador['cargo']?>" alt="cargo" align="left" required/>      
+            <?php echo $this->formSelect('cargo',$this->colaborador['cargo'],array(),$this->cargo);?>        
         </label>
         <br/>
         <label>Matrícula
@@ -47,5 +47,5 @@
         <a class="btn btn-toolbar" style="vertical-align:baseline;" href="<?php echo $this->baseUrl('/colaborador'); ?>">Voltar</a>
     </article>
 </form>
-<br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/>
 </section>

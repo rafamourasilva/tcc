@@ -1,0 +1,13 @@
+<h2>Excluir Tarefa</h2>
+<hr/>
+
+<form name="loginform" method="POST">
+        <input type="hidden" name="id" value="<?php echo $this->tarefa['id']?>">
+        <input type="hidden" name="excluir" value="<?php echo $this->tarefa['id']?>">
+        <label>Deseja realmente excluir a Tarefa? </label><br/>
+        <?php echo $this->tarefa['descricao']?>
+        <br/><br/>        
+        <input class="btn btn-danger" style="vertical-align:baseline;" type="submit" value="Excluir"/>
+        <a class="btn btn-toolbar" style="vertical-align:baseline;" href="<?php echo $this->baseUrl('/tarefa'); ?>">Voltar</a>
+</form>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>

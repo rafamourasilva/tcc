@@ -15,7 +15,7 @@ class ProjetoController extends Zend_Controller_Action {
     
     public function cadastrarAction() {
         $colaborador = new Application_Model_Colaborador();                
-        if($this->getParam('id_colaborador')) {  
+        if($this->getParam('responsavel')) {  
             try{
                 $post = $this->getAllParams();            
                 $projeto = new Application_Model_Projeto();
@@ -33,7 +33,7 @@ class ProjetoController extends Zend_Controller_Action {
         if($this->getParam("nome_projeto")) {
             try{                
                 $projeto["nome"] = $this->getParam('nome_projeto');
-                $projeto["id_colaborador"] = $this->getParam('id_colaborador');
+                $projeto["id_colaborador"] = $this->getParam('responsavel');
                 $projeto["data_ini"] = $this->getParam('data_ini');
                 $projeto["data_fim"] = $this->getParam('data_fim');
                 $projeto["resultado"] = $this->getParam('resultado');
@@ -49,9 +49,9 @@ class ProjetoController extends Zend_Controller_Action {
         $projetoModel->getAdapter()->setFetchMode(Zend_Db::FETCH_ASSOC); 
         $projeto = $projetoModel->buscarPorId($this->getParam("id"));                   
         $colaboradorModel = new Application_Model_Colaborador();
-        $colaboradores = $colaboradorModel->todos();
+        $responsavel = $colaboradorModel->todos();
         $this->view->projeto = $projeto;
-        $this->view->rel_colaboradores = $colaboradores;
+        $this->view->rel_colaboradores = $responsavel;
         
     }
     
@@ -59,21 +59,39 @@ class ProjetoController extends Zend_Controller_Action {
         $projetoModel = new Application_Model_Projeto();
         $projetoModel->getAdapter()->setFetchMode(Zend_Db::FETCH_ASSOC); 
         $projeto = $projetoModel->buscarPorId($this->getParam("id"));              
-        if($this->getParam("excluir")) {
-            $where = "id = ".$this->getParam("id");
-            $projetoModel->delete($where);
-            $this->_redirect("/projeto");
+        if($this->getParam("excluir")) {            
+            $projetoIntegridade = $projetoModel->selectIntegrity($this->getParam("id"));            
+            if(isset($projetoIntegridade['existe'])) {
+                $this->view->mensagem = "Projeto possui tarefas e não pode ser excluso";
+            } else {
+                $where = "id = ".$this->getParam("id");
+                $projetoModel->delete($where);
+                $this->_redirect("/projeto");                
+            }
         }
         $this->view->projeto = $projeto;
 
     }
     
     public function verAction() {
-        $projeto = new Application_Model_Colaborador();
-        $projeto->getAdapter()->setFetchMode(Zend_Db::FETCH_ASSOC); 
-        $use = $projeto->fetchRow("id = ".$this->getParam("id"));           
+       $projetoModel = new Application_Model_Projeto();
+        $projetoModel->getAdapter()->setFetchMode(Zend_Db::FETCH_ASSOC); 
+        $projeto = $projetoModel->buscarPorId($this->getParam("id"));
         
-        $this->view->projeto = $use;
+        $this->view->projeto = $projeto;
+        
+        $tarefaModel = new Application_Model_Tarefa();
+        
+        //estou passando um array com dois parametros: projeto e status
+        $this->view->tarefas_concluidos = $tarefaModel->todos(array(
+            "projeto" => $projeto["id"],
+            "status" => Application_Model_Projeto::STATUS_CONCLUIDO
+        ));
+        
+        $this->view->tarefas_andamento = $tarefaModel->todos(array(
+            "projeto" => $projeto["id"],
+            "status" => Application_Model_Projeto::STATUS_ANDAMENTO
+        ));
     }
 
 }

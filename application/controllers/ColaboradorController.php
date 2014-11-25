@@ -5,7 +5,7 @@
  * @subpackage controllers
  */
 class ColaboradorController extends Zend_Controller_Action {
-
+        
     public function indexAction()
     {
         $usuario = new Application_Model_Usuario();
@@ -36,6 +36,7 @@ class ColaboradorController extends Zend_Controller_Action {
             $colaborador["usuario_id"] = $this->getParam('usuario_id');
             $colaborador["cargo"] = $this->getParam('cargo');
             $colaborador["matricula"] = $this->getParam('matricula');
+            $colaborador["area"] = $this->getParam('area');
             $colaborador["data_adm"] = $this->getParam('data_adm');
             $colaborador["data_dem"] = $this->getParam('data_dem');
             $colaborador["funcao"] = $this->getParam('funcao');
@@ -69,11 +70,42 @@ class ColaboradorController extends Zend_Controller_Action {
     }
     
     public function verAction() {
-        $colaborador = new Application_Model_Colaborador();
-        $colaborador->getAdapter()->setFetchMode(Zend_Db::FETCH_ASSOC); 
-        $use = $colaborador->fetchRow("id = ".$this->getParam("id"));           
+        $colaboradorModel = new Application_Model_Colaborador();
+        $colaboradorModel->getAdapter()->setFetchMode(Zend_Db::FETCH_ASSOC); 
+        $colaborador = $colaboradorModel->buscarPorId($this->getParam("id"));
         
-        $this->view->colaborador = $use;
+        $projetoModel = new Application_Model_Projeto();
+        $projetos_concluidos = $projetoModel->todos(array(
+            "colaborador" => $colaborador["id"],
+            "status" => Application_Model_Projeto::STATUS_CONCLUIDO
+        ));
+        
+        $projetos_andamento = $projetoModel->todos(array(
+            "colaborador" => $colaborador["id"],
+            "status" => Application_Model_Projeto::STATUS_ANDAMENTO
+        ));
+        
+        $tarefaModel = new Application_Model_Tarefa();
+        $tarefas_concluidos = $tarefaModel->todos(array(
+            "colaborador" => $colaborador["id"],
+            "status" => Application_Model_Projeto::STATUS_CONCLUIDO
+        ));
+        
+        $tarefas_andamento = $tarefaModel->todos(array(
+            "colaborador" => $colaborador["id"],
+            "status" => Application_Model_Projeto::STATUS_ANDAMENTO
+        ));
+        
+        $this->view->projetos_concluidos = $projetos_concluidos;
+        $this->view->projetos_andamento = $projetos_andamento;
+        $this->view->tarefas_concluidos = $tarefas_concluidos;
+        $this->view->tarefas_andamento = $tarefas_andamento;
+        $this->view->colaborador = $colaborador;
+        $this->view->cargo = Application_Model_Colaborador::$cargos;
+        $this->view->area = Application_Model_Colaborador::$area;
+        $this->view->formacao = Application_Model_Colaborador::$formacao;
+        $this->view->funcao = Application_Model_Colaborador::$funcao;                
+       
     }
 
 }

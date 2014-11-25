@@ -40,15 +40,18 @@ class UsuarioController extends Zend_Controller_Action {
         $this->view->usuario = $use;
     }
     
-    public function excluirAction() {
-        $usuario = new Application_Model_Usuario();
-        $usuario->getAdapter()->setFetchMode(Zend_Db::FETCH_ASSOC); 
-        $use = $usuario->fetchRow("id = ".$this->getParam("id"));           
+    
+    
+     public function excluirAction() {
+        $usuarioModel = new Application_Model_Usuario();
+        $usuarioModel->getAdapter()->setFetchMode(Zend_Db::FETCH_ASSOC); 
+        $usuario = $usuarioModel->fetchRow("id = ".$this->getParam("id"));              
         if($this->getParam("excluir")) {
-            $use->delete();
+            $usuario->delete();
             $this->_redirect("/usuario");
         }
-        $this->view->usuario = $use;
+        $this->view->usuario = $usuario;
+
     }
 
 }

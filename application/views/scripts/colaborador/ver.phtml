@@ -1,13 +1,113 @@
-<h2>Excluir de usuário</h2>
 
+<section id="navegacao">
+<h2>Dados do Colaborador</h2>
 
-        <label>Nome </label><br/>
-        <?php echo $this->colaborador->nome?>
-        <br/><br/> 
-        <label>Cargo </label><br/>
-        <?php echo $this->colaborador->cargo?>
-        <br/><br/> 
-        <label>Área </label><br/>
-        <?php echo $this->colaborador->area?>
-        <br/><br/> 
-        <a href="<?php echo $this->baseUrl('/colaborador'); ?>">Voltar</a>
+        <input type="hidden" name="id" value="<?php echo $this->colaborador['id']?>">                   
+        <p><strong>Nome: </strong><?php echo $this->colaborador['nome']?></p>        
+        <p><strong>Cargo: </strong><?php echo $this->cargo[$this->colaborador['cargo']]?></p>        
+        <p><strong>Função: </strong><?php echo $this->funcao[$this->colaborador['funcao']]?></p>
+        <p><strong>Área: </strong><?php echo $this->area[$this->colaborador['area']]?></p>
+        <p><strong>Formação: </strong><?php echo $this->formacao[$this->colaborador['formacao']]?></p> 
+       
+<hr/>
+<form name="loginform" method="POST">  
+      
+    <article>    
+        
+        
+        <h2>Projetos Geridos</h2><br/>
+        <h3>Em andamento</h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>Nome do Projeto</th>
+                <th>Ações</th>
+            </tr>
+            <?php foreach ($this->projetos_andamento as $value) :?>
+            <tr>                
+                <td><?php echo $value['nome']?></td>
+                <td>
+                    <a class="btn btn-primary" href="<?php echo $this->baseUrl('/projeto/ver/id/'.$value['id'])?>">
+                    Detalhar
+                    </a> 
+                    <a class="btn btn-warning" href="<?php echo $this->baseUrl('/projeto/editar/id/'.$value['id'])?>">
+                    Editar
+                    </a>            
+                    <a class="btn btn-danger" href="<?php echo $this->baseUrl('/projeto/excluir/id/'.$value['id'])?>">
+                    Excluir
+                    </a>            
+                </td>                  
+            </tr>
+            <?php endforeach;?>
+         </table>        
+        <br/>
+        <h3>Concluídos</h3>
+        
+        <table class="table table-bordered">
+            <tr>
+                <th>Nome do Projeto</th>
+                <th>Ações</th>
+            </tr>
+            <?php foreach ($this->projetos_concluidos as $value) :?>
+            <tr>                
+                <td><?php echo $value['nome']?></td>
+                <td>
+                    <a class="btn btn-primary" href="<?php echo $this->baseUrl('/projeto/ver/id/'.$value['id'])?>">
+                    Detalhar
+                    </a> 
+                </td>                  
+            </tr>
+            <?php endforeach;?>
+         </table>
+        <a class="btn btn-toolbar" style="vertical-align:baseline;" href="<?php echo $this->baseUrl('/colaborador'); ?>">Voltar</a>
+    </article>  
+   
+    
+    <article>    
+        
+        <h2>Tarefas</h2><br/>
+        <h3>Em andamento</h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>Tarefa</th>
+                <th>Ações</th>
+            </tr>
+            <?php foreach ($this->tarefas_andamento as $value) :?>
+            <tr>                
+                <td><?php echo $value['descricao']?></td>
+                <td>
+                    <a class="btn btn-primary" href="<?php echo $this->baseUrl('/tarefa/ver/id/'.$value['id'])?>">
+                    Detalhar
+                    </a> 
+                    <a class="btn btn-warning" href="<?php echo $this->baseUrl('/tarefa/editar/id/'.$value['id'])?>">
+                    Editar
+                    </a>            
+                    <a class="btn btn-danger" href="<?php echo $this->baseUrl('/tarefa/excluir/id/'.$value['id'])?>">
+                    Excluir
+                    </a>            
+                </td>                  
+            </tr>
+            <?php endforeach;?>
+         </table>
+        <br/>
+        <h3>Concluídas</h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>Tarefa</th>
+                <th>Ações</th>
+            </tr>
+            <?php foreach ($this->tarefas_concluidos as $value) :?>
+            <tr>                
+                <td><?php echo $value['descricao']?></td>
+                <td>
+                    <a class="btn btn-primary" href="<?php echo $this->baseUrl('/tarefa/ver/id/'.$value['id'])?>">
+                    Detalhar
+                    </a>                      
+                </td>                  
+            </tr>
+            <?php endforeach;?>
+         </table>
+        
+    </article>  
+</form>
+<br/><br/><br/><br/><br/><br/>
+</section>

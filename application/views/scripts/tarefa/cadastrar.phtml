@@ -1,0 +1,49 @@
+<section id="navegacao">
+<h2>Cadastro Tarefas</h2>
+<hr/>
+<form name="loginform" method="POST">      
+    <article>
+        <label>Descrição
+            <?php echo $this->formText("descricao",'',array("required"=>true))?>
+        </label>
+        <br/>    
+        <label>Responsável
+            <select name="responsavel">
+                <option value="">
+                    Selecione
+                </option>
+                <?php foreach($this->rel_colaboradores as $responsavel):?>
+                <option value="<?php echo $responsavel["id"]?>">
+                <?php echo $responsavel["nome"]?>
+                </option>
+                <?php endforeach;?>
+            </select>
+        </label>
+        <br/>    
+        <label>Projeto
+            <select name="id_projeto">
+                <option value="">
+                    Selecione
+                </option>
+                <?php foreach($this->rel_projeto as $projeto):?>
+                <option value="<?php echo $projeto["id"]?>">
+                <?php echo $projeto["nome"]?>
+                </option>
+                <?php endforeach;?>
+            </select>
+        </label>
+        <br/>        
+        <div><label>Data de Início
+            <?php echo $this->formText("data_inicial",'',array("required"=>true))?>
+        </label></div>
+        
+        <div><label>Data de Conclusão
+            <?php echo $this->formText("data_final",'',array())?>
+        </label></div>
+        <br/>         
+        <input class="btn btn-success" style="vertical-align:baseline;" type="submit" value="Cadastrar"/>
+        <a class="btn btn-toolbar" style="vertical-align:baseline;" href="<?php echo $this->baseUrl('/tarefa'); ?>">Voltar</a>
+    </article>   
+</form>
+<br/><br/><br/><br/>
+</section>

@@ -27,16 +27,16 @@
 
             <header>
                 <h1>
-                    <a href="index.php" style="text-decoration:none; color: black;">
+                    <a href="<?php echo $this->baseUrl("/colaborador"); ?>" style="text-decoration:none; color: black;">
                         <img  alt="logomarca" src="<?php echo $this->baseUrl("/img/logo.png")?>"/>People</a>
                 </h1>
 
                 <nav alt="menu">
                     <ul>
-                        <a href="home.php"><li>Início</li></a>
-                        <a href="<?php echo $this->baseUrl("/usuario"); ?>"><li>Usuário</li></a>
-                        <a href="<?php echo $this->baseUrl("/colaborador"); ?>"><li>Colaborador</li></a>
-                        <a href="<?php echo $this->baseUrl("/projeto"); ?>"><li>Projeto</li></a>
+                        <a href="<?php echo $this->baseUrl("/usuario"); ?>"><li>Usuários</li></a>
+                        <a href="<?php echo $this->baseUrl("/colaborador"); ?>"><li>Colaboradores</li></a>
+                        <a href="<?php echo $this->baseUrl("/projeto"); ?>"><li>Projetos</li></a>
+                        <a href="<?php echo $this->baseUrl("/tarefa"); ?>"><li>Tarefas</li></a>
                         <a href="<?php echo $this->baseUrl("/"); ?>"><li>Sair</li></a>
                     </ul>	
                 </nav>
@@ -57,7 +57,7 @@
             </section><!------------- final de section navegacao ----------->
 
             <footer>
-                &copy2014
+                People &copy 2014 - Todos os direitos reservados
 
             </footer>
 

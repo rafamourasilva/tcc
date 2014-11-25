@@ -10,10 +10,10 @@
         </label>
         <br/>    
         <label>Gerente
-            <select name="id_colaborador">
-                <?php foreach($this->rel_colaboradores as $colaborador):?>
-                <option value="<?php echo $colaborador["id"]?>" <?php echo ($this->projeto['id_colaborador'] == $colaborador['id'] ? 'selected' : ''); ?>>
-                <?php echo $colaborador["nome"]?>
+            <select name="responsavel">
+                <?php foreach($this->rel_colaboradores as $responsavel):?>
+                <option value="<?php echo $responsavel["id"]?>" <?php echo ($this->responsavel['responsavel'] == $responsavel['id'] ? 'selected' : ''); ?>>
+                <?php echo $responsavel["nome"]?>
                 </option>
                 <?php endforeach;?>
             </select>
